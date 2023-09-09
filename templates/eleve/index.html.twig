@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Eleves{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="page-title flex-wrap">
+                        <div>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                + Eleve
+                            </button>
+                            <button type="button" class="btn btn-primary ms-2" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                + Eleve en attente
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table id="example" class="display table" style="min-width: 845px">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Prenom</th>
+                                <th>Nom</th>
+                                <th>Email</th>
+                                <th>Adresse</th>
+                                <th>Ville</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for eleve in eleves %}
+                            <tr>
+                                <td>{{ eleve.id }}</td>
+                                <td>{{ eleve.name }}</td>
+                                <td>{{ eleve.lastname }}</td>
+                                <td>{{ eleve.email }}</td>
+                                <td>{{ eleve.address }}</td>
+                                <td>{{ eleve.city }}</td>
+                                <td>
+                                    <a href="{{ path('app_eleve_show', {'id': eleve.id}) }}">show</a>
+                                    <a href="{{ path('app_eleve_edit', {'id': eleve.id}) }}">edit</a>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="7">no records found</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <!--/column-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">New Student Deatils</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="mb-3">
+
+                                <input type="text" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="Nom complet">
+                            </div>
+                            <div class="mb-3">
+
+                                <input type="text" class="form-control" id="exampleFormControlInput3"
+                                    placeholder="Prénom">
+                            </div>
+                            <div class="mb-3">
+
+                                <input type="text" class="form-control" id="exampleFormControlInput3"
+                                    placeholder="Portable">
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+
+                            <select class="default-select" aria-label="Default select example">
+                                <option selected>Gender</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="3">Other</option>
+                            </select>
+                            <div class="mt-3">
+
+                                <input type="text" class="form-control" id="exampleFormControlInput2"
+                                    placeholder="Localité">
+                            </div>
+
+                        </div>
+                        <div class="mb-3">
+
+                            <input type="text" class="form-control" id="exampleFormControlInput3"
+                                placeholder="Adresse email">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

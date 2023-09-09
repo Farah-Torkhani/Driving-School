@@ -37,7 +37,7 @@ function getUrlParams(dParam)
 			version: "light",
 			layout: "vertical",
 			primary: "color_1",
-			headerBg: "color_3",
+			headerBg: "color_1",
 			navheaderBg: "color_2",
 			sidebarBg: "color_2",
 			sidebarStyle: "full",
